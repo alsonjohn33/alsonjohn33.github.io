@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f4ef">
+  <meta name="description" content="Alson John Bangay — executive support, customer experience, and social media management from Bacolod, Philippines.">
+  <title>Alson John Bangay — Support & Social</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { paper: '#f5f4ef', ink: '#171816', muted: '#777872', line: '#d9d9d1', lime: '#d5fa65' }, fontFamily: { sans: ['Inter', 'Arial', 'sans-serif'] } } } }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Manrope', Arial, sans-serif; background: #f5f4ef; color: #171816; }
+    .mono { font-family: 'DM Mono', monospace; }
+    .display { letter-spacing: -.085em; line-height: .86; }
+    .hairline { border-color: #d9d9d1; }
+    .reel-card { background: #171816; transition: transform .35s ease, background .35s ease; }
+    .reel-card:hover { transform: translateY(-5px); background: #242620; }
+    .reel-card:hover .arrow { transform: translate(3px,-3px); }
+    .arrow { transition: transform .25s ease; }
+    .portrait-trigger { touch-action: manipulation; cursor: pointer; }
+    .portrait-trigger:focus-visible { outline: 2px solid #b5d64e; outline-offset: 4px; }
+    .nav-active { color: #171816; text-decoration: underline; text-decoration-color: #b5d64e; text-decoration-thickness: 2px; text-underline-offset: 7px; }
+    .reel-card { position: relative; overflow: hidden; transform: perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)); }
+    .reel-card::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; background: radial-gradient(260px circle at var(--pointer-x, 50%) var(--pointer-y, 50%), rgba(213,250,101,.12), transparent 75%); transition: opacity .25s ease; }
+    .reel-card:hover::after { opacity: 1; }
+    .reel-card > * { position: relative; z-index: 1; }
+    dialog::backdrop { backdrop-filter: blur(4px); }
+    dialog[open] { animation: dialog-in .18s ease-out; }
+    @keyframes dialog-in { from { opacity: 0; transform: translateY(8px) scale(.99); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    /* Optional dark theme overrides while keeping the paper palette as the default. */
+    .dark-theme body { background: #171816; color: #f5f4ef; }
+    .dark-theme .bg-paper, .dark-theme .bg-paper\/95 { background-color: #171816; }
+    .dark-theme .text-ink, .dark-theme .text-zinc-700, .dark-theme .text-zinc-600 { color: #f5f4ef; }
+    .dark-theme .text-muted { color: #aaa99f; }
+    .dark-theme .nav-active { color: #f5f4ef; }
+    .dark-theme .hairline, .dark-theme .border-ink { border-color: #3b3c36; }
+    .dark-theme .bg-lime { color: #171816; }
+    .dark-theme header { background-color: rgba(23,24,22,.96); }
+    [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+    .filter-button[aria-pressed="true"] { background: #171816; color: #f5f4ef; border-color: #171816; }
+    .dark-theme .filter-button[aria-pressed="true"] { background: #d5fa65; color: #171816; border-color: #d5fa65; }
+    .filter-hidden { display: none !important; }
+    @media (prefers-reduced-motion: reduce) { [data-reveal] { opacity: 1; transform: none; } .reel-card { transform: none; } dialog[open] { animation: none; } }
+    ::selection { color: #171816; background: #d5fa65; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+  </style>
+</head>
+<body class="antialiased">
+  <div id="scroll-progress" class="fixed left-0 top-0 z-[60] h-[2px] w-0 bg-lime transition-[width] duration-100" aria-hidden="true"></div>
+  <!-- Slim status line inspired by the reference site's live utility strip -->
+  <div class="hidden sm:flex items-center justify-between border-b hairline px-6 py-2.5 text-[10px] uppercase tracking-[.18em] mono text-muted md:px-10 lg:px-16">
+    <span>AJB :: Bacolod, PH</span><span>Open to remote opportunities <i class="ml-2 inline-block h-1.5 w-1.5 rounded-full bg-lime-600" style="background:#7b9c2a"></i></span><span>Support · Social · Systems</span>
+  </div>
+
+  <!-- Primary navigation -->
+  <header class="sticky top-0 z-40 border-b hairline bg-paper/95 px-6 md:px-10 lg:px-16">
+    <div class="mx-auto flex h-[68px] max-w-[1440px] items-center justify-between">
+      <a href="#top" aria-label="Alson John Bangay home" class="mono text-sm font-medium tracking-tight">AJB<span class="text-muted">::</span></a>
+      <nav id="desktop-nav" class="hidden items-center gap-8 text-xs md:flex">
+        <a class="hover:text-muted" href="#about">About</a><a class="hover:text-muted" href="#work">Selected work</a><a class="hover:text-muted" href="#experience">Experience</a><a class="hover:text-muted" href="#contact">Contact</a>
+      </nav>
+      <div class="hidden items-center gap-2 sm:flex"><button id="quick-open" class="rounded-full border hairline px-3 py-2 text-[11px] transition hover:bg-ink hover:text-paper" type="button" aria-label="Open quick navigation"><span class="mono">Ctrl K</span></button><button id="theme-toggle" class="rounded-full border hairline px-3 py-2 text-[11px] transition hover:bg-ink hover:text-paper" type="button" aria-label="Switch to dark theme">◐ <span class="hidden lg:inline">Theme</span></button><a class="rounded-full border border-ink px-4 py-2 text-[11px] transition hover:bg-ink hover:text-paper" href="mailto:ajbangay100@gmail.com">Let’s talk <span class="ml-2">↗</span></a></div>
+      <div class="flex items-center gap-2 sm:hidden"><button id="theme-toggle-mobile" class="h-10 rounded-full border hairline px-3 text-xs" type="button" aria-label="Switch to dark theme">◐</button><button id="menu-button" class="flex h-10 w-10 items-center justify-center rounded-full border hairline md:hidden" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu"><span class="text-lg leading-none">☰</span></button></div>
+    </div>
+    <nav id="mobile-menu" class="hidden border-t hairline py-4 md:hidden" aria-label="Mobile navigation">
+      <div class="grid gap-4 text-sm"><a href="#about">About</a><a href="#work">Selected work</a><a href="#experience">Experience</a><a href="#contact">Contact</a></div>
+    </nav>
+  </header>
+
+  <main id="top" class="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16">
+    <!-- Intro / hero -->
+    <section data-reveal class="grid min-h-[610px] items-center gap-10 border-b hairline py-16 md:grid-cols-[1fr_250px] md:py-24 lg:min-h-[690px] lg:grid-cols-[1fr_300px]">
+      <div>
+        <p class="mono mb-8 text-[10px] uppercase tracking-[.2em] text-muted">Independent support professional · Bacolod, Philippines</p>
+        <h1 class="display max-w-5xl text-[clamp(4rem,11.8vw,10.5rem)] font-semibold">Alson John<br><span class="text-muted">Bangay</span></h1>
+        <div class="mt-9 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted">
+          <span>IT support</span><span class="text-lime-700">/</span><span>Networking</span><span class="text-lime-700">/</span><span>AI automation</span>
+        </div>
+        <a href="#work" class="mt-12 inline-flex items-center gap-3 rounded-full bg-ink px-5 py-3 text-xs text-paper transition hover:bg-zinc-700">Explore selected work <span>↓</span></a>
+      </div>
+      <div class="relative mx-auto w-full max-w-[250px] md:mx-0 md:justify-self-end lg:max-w-[300px]">
+        <div class="absolute -right-3 -top-3 h-full w-full border hairline"></div>
+        <button id="portrait-trigger" type="button" class="portrait-trigger group relative block w-full text-left" aria-label="Double-click to play Alson’s video introduction" aria-describedby="portrait-hint" title="Double-click to play the video">
+          <img src="My%20Profile%20Picture.jpg" alt="Portrait of Alson John Bangay" class="relative aspect-[4/5] w-full object-cover grayscale transition duration-500 group-hover:grayscale-0">
+          <span class="portrait-prompt absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-black/80 to-transparent px-4 pb-4 pt-12 text-[10px] uppercase tracking-[.14em] text-white opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">Double-click to play <span aria-hidden="true">▶</span></span>
+        </button>
+        <p id="portrait-hint" class="mono mt-3 text-[9px] uppercase tracking-[.16em] text-muted">Double-click photo · Bacolod, Philippines</p>
+      </div>
+    </section>
+
+    <!-- About and proof points -->
+    <section id="about" data-reveal class="grid gap-10 border-b hairline py-20 md:grid-cols-[.7fr_1.3fr] md:py-28">
+      <div><p class="mono text-[10px] uppercase tracking-[.2em] text-muted">01 / About</p><h2 class="mt-5 text-3xl font-semibold tracking-[-.06em] md:text-4xl">Good work, made<br>clear and reliable.</h2></div>
+      <div>
+        <p class="max-w-3xl text-lg leading-relaxed text-zinc-700 md:text-[21px]">Versatile support professional with 4+ years of experience across executive assistance, social media management, technical support, and financial support. Skilled in managing calendars, inboxes, and client communication, and in producing social content that drives engagement—including Instagram Reels averaging <strong class="font-semibold text-ink">23K–50K views</strong>. Experienced with Salesforce, Intercom, and basic Python automation. Adaptable, quick to learn, and focused on turning high-volume work into clear, reliable outcomes.</p>
+        <div class="mt-12 grid grid-cols-2 gap-6 border-t hairline pt-6 sm:grid-cols-4">
+          <div><p class="text-3xl font-semibold tracking-[-.06em]">4+</p><p class="mt-2 text-xs text-muted">Years of experience</p></div><div><p class="text-3xl font-semibold tracking-[-.06em]">23–50K</p><p class="mt-2 text-xs text-muted">Views per Reel</p></div><div><p class="text-3xl font-semibold tracking-[-.06em]">Top</p><p class="mt-2 text-xs text-muted">Agent recognition</p></div><div><p class="text-3xl font-semibold tracking-[-.06em]">3</p><p class="mt-2 text-xs text-muted">Areas of support</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work / featured social portfolio -->
+    <section id="work" data-reveal class="border-b hairline py-20 md:py-28">
+      <div class="mb-12 flex flex-wrap items-end justify-between gap-6"><div><p class="mono text-[10px] uppercase tracking-[.2em] text-muted">02 / Selected work</p><h2 class="mt-4 text-4xl font-semibold tracking-[-.07em] md:text-6xl">A little proof<br>of the work.</h2></div><p class="max-w-xs text-sm leading-relaxed text-muted">Hands-on networking and AI projects, supported by practical experience in customer support and social content.</p></div>
+      <div class="mb-5 flex flex-wrap gap-2" role="group" aria-label="Filter selected work">
+        <button class="filter-button rounded-full border hairline px-4 py-2 text-[11px] transition" type="button" data-filter="all" aria-pressed="true">All work</button>
+        <button class="filter-button rounded-full border hairline px-4 py-2 text-[11px] transition" type="button" data-filter="social" aria-pressed="false">Social media</button>
+        <button class="filter-button rounded-full border hairline px-4 py-2 text-[11px] transition" type="button" data-filter="automation" aria-pressed="false">Automation</button>
+        <button class="filter-button rounded-full border hairline px-4 py-2 text-[11px] transition" type="button" data-filter="networking" aria-pressed="false">Networking</button>
+        <button class="filter-button rounded-full border hairline px-4 py-2 text-[11px] transition" type="button" data-filter="agents" aria-pressed="false">AI agents</button>
+      </div>
+      <div id="work-grid" class="grid gap-4 md:grid-cols-3">
+        <article data-work="social" class="reel-card group flex min-h-[280px] flex-col justify-between rounded-sm p-6 text-paper md:p-7">
+          <div class="flex items-start justify-between"><span class="mono text-[10px] uppercase tracking-[.16em] text-white/50">Instagram · Reel 01</span><span class="arrow text-xl">↗</span></div><div><p class="mono mb-3 text-[10px] uppercase tracking-[.16em] text-lime">Growth campaign</p><h3 class="text-2xl font-semibold tracking-[-.06em]">Reach that<br>keeps moving.</h3><p class="mt-5 text-xs text-white/55">Part of a series averaging 23K–50K views per video.</p><div class="mt-5 flex items-center gap-3"><button type="button" class="preview-reel rounded-full bg-paper px-4 py-2 text-[11px] font-medium text-ink transition hover:bg-lime" data-reel="DWPEjNdESBA" data-label="Instagram Reel 01">Preview <span aria-hidden="true">▶</span></button><a class="text-[11px] text-white/65 underline underline-offset-4 hover:text-white" href="https://www.instagram.com/reel/DWPEjNdESBA/" target="_blank" rel="noopener noreferrer">Open on Instagram ↗</a></div></div>
+        </article>
+        <article data-work="social" class="reel-card group flex min-h-[280px] flex-col justify-between rounded-sm p-6 text-paper md:p-7">
+          <div class="flex items-start justify-between"><span class="mono text-[10px] uppercase tracking-[.16em] text-white/50">Instagram · Reel 02</span><span class="arrow text-xl">↗</span></div><div><p class="mono mb-3 text-[10px] uppercase tracking-[.16em] text-lime">Content production</p><h3 class="text-2xl font-semibold tracking-[-.06em]">A strong hook.<br>A clear story.</h3><p class="mt-5 text-xs text-white/55">Planning, production, and publishing for social.</p><div class="mt-5 flex items-center gap-3"><button type="button" class="preview-reel rounded-full bg-paper px-4 py-2 text-[11px] font-medium text-ink transition hover:bg-lime" data-reel="DWHq587Dy3H" data-label="Instagram Reel 02">Preview <span aria-hidden="true">▶</span></button><a class="text-[11px] text-white/65 underline underline-offset-4 hover:text-white" href="https://www.instagram.com/reel/DWHq587Dy3H/" target="_blank" rel="noopener noreferrer">Open on Instagram ↗</a></div></div>
+        </article>
+        <article data-work="social" class="reel-card group flex min-h-[280px] flex-col justify-between rounded-sm p-6 text-paper md:p-7">
+          <div class="flex items-start justify-between"><span class="mono text-[10px] uppercase tracking-[.16em] text-white/50">Instagram · Reel 03</span><span class="arrow text-xl">↗</span></div><div><p class="mono mb-3 text-[10px] uppercase tracking-[.16em] text-lime">Growth campaign</p><h3 class="text-2xl font-semibold tracking-[-.06em]">Built for the<br>scroll, made to stick.</h3><p class="mt-5 text-xs text-white/55">Part of a series averaging 23K–50K views per video.</p><div class="mt-5 flex items-center gap-3"><button type="button" class="preview-reel rounded-full bg-paper px-4 py-2 text-[11px] font-medium text-ink transition hover:bg-lime" data-reel="DWNAdNtD_Lu" data-label="Instagram Reel 03">Preview <span aria-hidden="true">▶</span></button><a class="text-[11px] text-white/65 underline underline-offset-4 hover:text-white" href="https://www.instagram.com/reel/DWNAdNtD_Lu/" target="_blank" rel="noopener noreferrer">Open on Instagram ↗</a></div></div>
+        </article>
+      </div>
+      <div class="mt-4 grid gap-4 md:grid-cols-2">
+        <a data-work="networking" class="reel-card group flex min-h-[230px] flex-col justify-between rounded-sm p-6 text-paper md:p-7" href="https://lnkd.in/p/gjU2QW9f" target="_blank" rel="noopener noreferrer" aria-label="View Cisco Packet Tracer projects on LinkedIn">
+          <div class="flex items-start justify-between"><span class="mono text-[10px] uppercase tracking-[.16em] text-white/50">IT · Networking</span><span class="arrow text-xl">↗</span></div>
+          <div><p class="mono mb-3 text-[10px] uppercase tracking-[.16em] text-lime">Cisco Packet Tracer</p><h3 class="text-2xl font-semibold tracking-[-.06em]">Network projects<br>& lab work.</h3><p class="mt-4 text-xs text-white/55">View project details on LinkedIn.</p></div>
+        </a>
+        <a data-work="agents" class="reel-card group flex min-h-[230px] flex-col justify-between rounded-sm p-6 text-paper md:p-7" href="https://lnkd.in/p/gKKd8uMB" target="_blank" rel="noopener noreferrer" aria-label="View AI agents project on LinkedIn">
+          <div class="flex items-start justify-between"><span class="mono text-[10px] uppercase tracking-[.16em] text-white/50">AI · Agents</span><span class="arrow text-xl">↗</span></div>
+          <div><p class="mono mb-3 text-[10px] uppercase tracking-[.16em] text-lime">AI agent project</p><h3 class="text-2xl font-semibold tracking-[-.06em]">Exploring useful<br>AI workflows.</h3><p class="mt-4 text-xs text-white/55">View project details on LinkedIn.</p></div>
+        </a>
+      </div>
+      <div class="mt-4 grid gap-4 md:grid-cols-[1.5fr_1fr]">
+        <article data-work="automation" class="flex flex-col justify-between border hairline p-6 md:min-h-[190px] md:p-7"><div class="mono text-[10px] uppercase tracking-[.16em] text-muted">Workflow automation · Python</div><div class="mt-8 flex items-end justify-between gap-5"><div><h3 class="text-xl font-semibold tracking-[-.05em]">Small scripts. Less busywork.</h3><p class="mt-2 max-w-lg text-sm leading-relaxed text-muted">Built basic custom scripts to optimize support workflows and reduce repetitive steps.</p></div><a class="shrink-0 text-xl" href="https://github.com/alsonjohn33" target="_blank" rel="noopener noreferrer" aria-label="View GitHub">↗</a></div></article>
+        <div class="flex min-h-[190px] flex-col justify-between bg-lime p-6 md:p-7"><p class="mono text-[10px] uppercase tracking-[.16em]">The toolkit</p><p class="text-sm leading-7">Salesforce · Intercom<br>Claude · ChatGPT · Python<br>Instagram · SEO fundamentals</p></div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" data-reveal class="grid gap-10 border-b hairline py-20 md:grid-cols-[.7fr_1.3fr] md:py-28">
+      <div><p class="mono text-[10px] uppercase tracking-[.2em] text-muted">03 / Experience</p><h2 class="mt-5 text-3xl font-semibold tracking-[-.06em] md:text-4xl">Different roles.<br>One steady focus.</h2></div>
+      <div class="divide-y divide-[#d9d9d1]">
+        <article class="grid gap-3 py-6 first:pt-0 md:grid-cols-[1fr_auto]"><div><h3 class="text-lg font-semibold tracking-[-.04em]">Social Media Manager & Executive Assistant</h3><p class="mt-1 text-sm text-muted">StampStaff Agency</p><p class="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-600">Managed content calendars and posting schedules; produced Instagram Reels averaging 23K–50K views. Supported agency leadership with calendar management, inbox organization, and scheduling.</p></div><p class="mono text-[10px] uppercase tracking-[.14em] text-muted">Feb–Jul 2026</p></article>
+        <article class="grid gap-3 py-6 md:grid-cols-[1fr_auto]"><div><h3 class="text-lg font-semibold tracking-[-.04em]">Financial Support Specialist</h3><p class="mt-1 text-sm text-muted">Ubiquity Global Services, Inc.</p><p class="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-600">Supported financial account inquiries, transaction concerns, and account management requests across digital channels. Handled sensitive information with accuracy and confidentiality.<br><span class="mt-2 inline-block text-ink">★ Top Agent recognition: Oct 2023–Apr 2024, Jul–Sep 2024, and Aug 2025</span></p></div><p class="mono text-[10px] uppercase tracking-[.14em] text-muted">2022–2025</p></article>
+        <article class="grid gap-3 py-6 last:pb-0 md:grid-cols-[1fr_auto]"><div><h3 class="text-lg font-semibold tracking-[-.04em]">Technical Support Specialist</h3><p class="mt-1 text-sm text-muted">Panasiatic Solutions</p><p class="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-600">Resolved system, account, and application concerns through chat and email support.</p></div><p class="mono text-[10px] uppercase tracking-[.14em] text-muted">2021–2022</p></article>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section data-reveal class="grid gap-10 border-b hairline py-16 md:grid-cols-[.7fr_1.3fr] md:py-20"><p class="mono text-[10px] uppercase tracking-[.2em] text-muted">04 / Capabilities</p><div class="grid gap-8 sm:grid-cols-2"><div><h3 class="text-sm font-semibold">Administrative & executive</h3><p class="mt-3 text-sm leading-7 text-muted">Calendar management · Inbox management · Scheduling · Executive support</p></div><div><h3 class="text-sm font-semibold">Customer & technical</h3><p class="mt-3 text-sm leading-7 text-muted">Technical support · Financial account support · Issue resolution · Client communication</p></div><div><h3 class="text-sm font-semibold">CRM & automation</h3><p class="mt-3 text-sm leading-7 text-muted">Salesforce · Intercom · Basic Python automation · AI agents · Cisco Packet Tracer</p></div><div><h3 class="text-sm font-semibold">Social & content</h3><p class="mt-3 text-sm leading-7 text-muted">Social media management · Content planning · Instagram Reels · SEO fundamentals</p></div></div></section>
+
+    <!-- Contact -->
+    <section id="contact" data-reveal class="grid gap-10 py-20 md:grid-cols-[.7fr_1.3fr] md:py-28"><div><p class="mono text-[10px] uppercase tracking-[.2em] text-muted">05 / Contact</p><h2 class="mt-5 text-3xl font-semibold tracking-[-.06em] md:text-4xl">Let’s make<br>good work happen.</h2></div><div><a id="email-link" class="inline-block text-[clamp(1.5rem,4vw,3rem)] font-medium tracking-[-.07em] underline decoration-[#d9d9d1] underline-offset-8 transition hover:decoration-ink" href="mailto:ajbangay100@gmail.com">ajbangay100@gmail.com ↗</a> <button id="copy-email" type="button" class="ml-3 rounded-full border hairline px-3 py-2 text-[10px] transition hover:bg-ink hover:text-paper" aria-label="Copy email address">Copy email</button><span id="copy-status" class="sr-only" aria-live="polite"></span><p class="mt-6 text-sm text-muted"><a class="hover:text-ink" href="tel:+639390070390">+63 939 007 0390</a> <span class="px-2">·</span> Bacolod, Philippines</p><div class="mt-10 flex flex-wrap gap-x-6 gap-y-3 border-t hairline pt-6 text-xs"><a class="hover:text-muted" href="https://www.linkedin.com/in/alson-john-bangay/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a class="hover:text-muted" href="https://github.com/alsonjohn33" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a class="hover:text-muted" href="https://ph.jobstreet.com/profiles/alsonjohn-bangay-12bhz7ywjg" target="_blank" rel="noopener noreferrer">JobStreet ↗</a><a class="hover:text-muted" href="https://v2.onlinejobs.ph/jobseekers/info/4723916" target="_blank" rel="noopener noreferrer">OnlineJobs.ph ↗</a></div></div></section>
+  </main>
+
+  <!-- Accessible Instagram preview modal; the embed loads only after a visitor asks to preview. -->
+  <dialog id="reel-dialog" class="w-[min(92vw,460px)] max-h-[92vh] overflow-auto rounded-sm border hairline bg-paper p-0 text-ink shadow-2xl backdrop:bg-black/70">
+    <div class="flex items-center justify-between border-b hairline px-5 py-4"><div><p class="mono text-[10px] uppercase tracking-[.16em] text-muted">Instagram preview</p><h2 id="reel-title" class="mt-1 text-lg font-semibold">Featured Reel</h2></div><button type="button" id="reel-close" class="h-9 w-9 rounded-full border hairline text-lg" aria-label="Close Reel preview">×</button></div>
+    <div class="p-4"><iframe id="reel-frame" title="Instagram Reel preview" class="aspect-[9/16] w-full bg-black" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe><p class="mt-3 text-xs leading-relaxed text-muted">If Instagram doesn’t load the preview, <a id="reel-fallback" class="underline underline-offset-4 hover:text-ink" target="_blank" rel="noopener noreferrer">open this Reel on Instagram ↗</a>.</p></div>
+  </dialog>
+
+  <!-- Double-click the portrait to play this short video introduction. -->
+  <dialog id="intro-dialog" class="w-[min(92vw,760px)] max-h-[92vh] overflow-auto rounded-sm border hairline bg-ink p-0 text-paper shadow-2xl backdrop:bg-black/75">
+    <div class="flex items-center justify-between border-b border-white/15 px-5 py-4"><div><p class="mono text-[10px] uppercase tracking-[.16em] text-white/55">A quick hello</p><h2 class="mt-1 text-lg font-semibold">Alson John Bangay</h2></div><button type="button" id="intro-close" class="h-9 w-9 rounded-full border border-white/30 text-lg" aria-label="Close video">×</button></div>
+    <div class="p-4 sm:p-6"><video id="intro-video" class="mx-auto max-h-[68vh] w-full rounded-sm bg-black object-contain" src="My%20video.mp4" controls muted playsinline preload="metadata" aria-label="Alson's video introduction"></video><p id="intro-note" class="mt-3 text-xs text-white/60">The video closes when playback finishes. You can pause or close it anytime.</p></div>
+  </dialog>
+
+  <!-- Quick navigation: open with the header button or Ctrl/⌘ + K. -->
+  <dialog id="quick-dialog" class="w-[min(92vw,520px)] rounded-sm border hairline bg-paper p-0 text-ink shadow-2xl backdrop:bg-black/60">
+    <div class="flex items-center justify-between border-b hairline px-5 py-4"><div><p class="mono text-[10px] uppercase tracking-[.16em] text-muted">Quick navigation</p><h2 class="mt-1 text-lg font-semibold">Jump to a section</h2></div><button type="button" id="quick-close" class="h-9 w-9 rounded-full border hairline text-lg" aria-label="Close quick navigation">×</button></div>
+    <nav class="grid gap-1 p-3" aria-label="Quick navigation links"><a class="quick-link rounded-sm px-4 py-3 text-sm transition hover:bg-lime" href="#top">Home <span class="float-right text-muted">01</span></a><a class="quick-link rounded-sm px-4 py-3 text-sm transition hover:bg-lime" href="#about">About <span class="float-right text-muted">02</span></a><a class="quick-link rounded-sm px-4 py-3 text-sm transition hover:bg-lime" href="#work">Selected work <span class="float-right text-muted">03</span></a><a class="quick-link rounded-sm px-4 py-3 text-sm transition hover:bg-lime" href="#experience">Experience <span class="float-right text-muted">04</span></a><a class="quick-link rounded-sm px-4 py-3 text-sm transition hover:bg-lime" href="#contact">Contact <span class="float-right text-muted">05</span></a></nav>
+    <p class="border-t hairline px-5 py-3 text-[10px] text-muted mono">ESC to close · Ctrl/Cmd+K to toggle</p>
+  </dialog>
+
+  <footer class="border-t hairline px-6 py-5 md:px-10 lg:px-16"><div class="mx-auto flex max-w-[1440px] flex-wrap justify-between gap-3 text-[10px] uppercase tracking-[.15em] text-muted mono"><span>© <span id="year"></span> Alson John Bangay</span><a href="#top" class="hover:text-ink">Back to top ↑</a><span>Made with care in Bacolod</span></div></footer>
+
+  <!-- Progressive enhancement: navigation, theme, work filters, reveal motion, and copy email -->
+  <script>
+    const menuButton = document.getElementById('menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuButton.addEventListener('click', () => {
+      const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', String(!isOpen));
+      menuButton.setAttribute('aria-label', isOpen ? 'Open navigation' : 'Close navigation');
+      mobileMenu.classList.toggle('hidden', isOpen);
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.setAttribute('aria-label', 'Open navigation');
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Open the short intro video on a double-click (or Enter/Space while focused).
+    const portraitTrigger = document.getElementById('portrait-trigger');
+    const introDialog = document.getElementById('intro-dialog');
+    const introVideo = document.getElementById('intro-video');
+    let lastPortraitClick = 0;
+    const playIntro = () => {
+      if (introDialog.open) return;
+      introDialog.showModal();
+      introVideo.currentTime = 0;
+      const playback = introVideo.play();
+      if (playback && typeof playback.catch === 'function') {
+        playback.catch(() => { document.getElementById('intro-note').textContent = 'Tap play to start the video. You can pause or close it anytime.'; });
+      }
+    };
+    portraitTrigger.addEventListener('click', event => {
+      const now = Date.now();
+      if (event.detail >= 2 || (lastPortraitClick && now - lastPortraitClick < 420)) {
+        event.preventDefault();
+        lastPortraitClick = 0;
+        playIntro();
+      } else {
+        lastPortraitClick = now;
+      }
+    });
+    portraitTrigger.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); playIntro(); }
+    });
+    const closeIntro = () => { introVideo.pause(); introVideo.currentTime = 0; if (introDialog.open) introDialog.close(); };
+    document.getElementById('intro-close').addEventListener('click', closeIntro);
+    introVideo.addEventListener('ended', closeIntro);
+    introDialog.addEventListener('click', event => { if (event.target === introDialog) closeIntro(); });
+    introDialog.addEventListener('close', () => { introVideo.pause(); introVideo.currentTime = 0; });
+
+    // Reel previews load on demand, with a direct Instagram fallback in the dialog.
+    const reelDialog = document.getElementById('reel-dialog');
+    const reelFrame = document.getElementById('reel-frame');
+    const reelTitle = document.getElementById('reel-title');
+    const reelFallback = document.getElementById('reel-fallback');
+    document.querySelectorAll('.preview-reel').forEach(button => button.addEventListener('click', () => {
+      const url = `https://www.instagram.com/reel/${button.dataset.reel}/`;
+      reelTitle.textContent = button.dataset.label;
+      reelFallback.href = url;
+      reelFrame.src = `${url}embed/`;
+      reelDialog.showModal();
+    }));
+    const closeReel = () => { reelDialog.close(); reelFrame.removeAttribute('src'); };
+    document.getElementById('reel-close').addEventListener('click', closeReel);
+    reelDialog.addEventListener('click', event => { if (event.target === reelDialog) closeReel(); });
+    reelDialog.addEventListener('close', () => reelFrame.removeAttribute('src'));
+
+    // Quick navigation can be opened from its button or the Ctrl/Command + K shortcut.
+    const quickDialog = document.getElementById('quick-dialog');
+    const openQuick = () => quickDialog.showModal();
+    document.getElementById('quick-open').addEventListener('click', openQuick);
+    document.getElementById('quick-close').addEventListener('click', () => quickDialog.close());
+    quickDialog.querySelectorAll('.quick-link').forEach(link => link.addEventListener('click', () => quickDialog.close()));
+    quickDialog.addEventListener('click', event => { if (event.target === quickDialog) quickDialog.close(); });
+    document.addEventListener('keydown', event => {
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+        event.preventDefault();
+        if (quickDialog.open) quickDialog.close(); else openQuick();
+      }
+    });
+
+    // Reading progress and active navigation state follow the visitor's scroll position.
+    const progress = document.getElementById('scroll-progress');
+    const navLinks = [...document.querySelectorAll('#desktop-nav a')];
+    const trackedSections = [...document.querySelectorAll('main section[id]')];
+    const updateScrollUI = () => {
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = `${maxScroll > 0 ? window.scrollY / maxScroll * 100 : 0}%`;
+      const current = [...trackedSections].reverse().find(section => section.getBoundingClientRect().top <= 140);
+      navLinks.forEach(link => {
+        const active = current && link.hash === `#${current.id}`;
+        link.classList.toggle('nav-active', Boolean(active));
+        if (active) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current');
+      });
+    };
+    window.addEventListener('scroll', updateScrollUI, { passive: true });
+    window.addEventListener('resize', updateScrollUI);
+    updateScrollUI();
+
+    // Subtle pointer spotlight and tilt make the work tiles feel responsive on desktop.
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.reel-card').forEach(card => {
+        card.addEventListener('pointermove', event => {
+          const rect = card.getBoundingClientRect();
+          card.style.setProperty('--pointer-x', `${event.clientX - rect.left}px`);
+          card.style.setProperty('--pointer-y', `${event.clientY - rect.top}px`);
+          card.style.setProperty('--tilt-x', `${(event.clientY - rect.top - rect.height / 2) / rect.height * -2}deg`);
+          card.style.setProperty('--tilt-y', `${(event.clientX - rect.left - rect.width / 2) / rect.width * 2}deg`);
+        });
+        card.addEventListener('pointerleave', () => {
+          card.style.setProperty('--tilt-x', '0deg'); card.style.setProperty('--tilt-y', '0deg');
+        });
+      });
+    }
+
+    // Preserve the visitor's theme choice in this browser.
+    const themeButtons = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')].filter(Boolean);
+    const setTheme = (dark) => {
+      document.documentElement.classList.toggle('dark-theme', dark);
+      themeButtons.forEach(button => button.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme'));
+      try { localStorage.setItem('alson-theme', dark ? 'dark' : 'light'); } catch (_) {}
+    };
+    try { setTheme(localStorage.getItem('alson-theme') === 'dark'); } catch (_) { setTheme(false); }
+    themeButtons.forEach(button => button.addEventListener('click', () => setTheme(!document.documentElement.classList.contains('dark-theme'))));
+
+    // Let visitors narrow the work cards by type.
+    const filterButtons = document.querySelectorAll('[data-filter]');
+    const workItems = document.querySelectorAll('[data-work]');
+    filterButtons.forEach(button => button.addEventListener('click', () => {
+      const selected = button.dataset.filter;
+      filterButtons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+      workItems.forEach(item => item.classList.toggle('filter-hidden', selected !== 'all' && item.dataset.work !== selected));
+    }));
+
+    // Reveal sections as they enter view; retain normal visibility if unsupported.
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const revealObserver = new IntersectionObserver((entries, observer) => entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }
+      }), { threshold: 0.12 });
+      document.querySelectorAll('[data-reveal]').forEach(section => revealObserver.observe(section));
+    } else {
+      document.querySelectorAll('[data-reveal]').forEach(section => section.classList.add('is-visible'));
+    }
+
+    // Copy the contact email and announce the result for assistive technology.
+    document.getElementById('copy-email').addEventListener('click', async event => {
+      const button = event.currentTarget;
+      const status = document.getElementById('copy-status');
+      try {
+        await navigator.clipboard.writeText('ajbangay100@gmail.com');
+        button.textContent = 'Copied!'; status.textContent = 'Email copied to clipboard.';
+      } catch (_) {
+        window.location.href = 'mailto:ajbangay100@gmail.com';
+        status.textContent = 'Opening your email app.';
+      }
+      window.setTimeout(() => { button.textContent = 'Copy email'; }, 1800);
+    });
+  </script>
+</body>
+</html>
+
